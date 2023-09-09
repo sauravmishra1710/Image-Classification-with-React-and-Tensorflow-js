@@ -29,14 +29,16 @@ function App() {
             const url = URL.createObjectURL(files[0])
             setImageURL(url)
         } else {
-            // cancel open file dialog
+            // cancel open file dialog and hide the results holder.
             setImageURL(null)
-        }
+            document.getElementsByClassName('resultsHolder')[0].style.display = 'none';
+          }
     }
 
     const identify = async () => {
         const results = await model.classify(imageRef.current)
         setResults(results)
+        document.getElementsByClassName('resultsHolder')[0].style.display = 'block';
     }
 
     const triggerUpload = () => {
