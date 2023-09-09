@@ -7,7 +7,6 @@ function App() {
     const [model, setModel] = useState(null)
     const [imageURL, setImageURL] = useState(null);
     const [results, setResults] = useState([])
-    const [history, setHistory] = useState([])
 
     const imageRef = useRef()
     const fileInputRef = useRef()
@@ -30,6 +29,7 @@ function App() {
             const url = URL.createObjectURL(files[0])
             setImageURL(url)
         } else {
+            // cancel open file dialog
             setImageURL(null)
         }
     }
@@ -46,12 +46,6 @@ function App() {
     useEffect(() => {
         loadModel()
     }, [])
-
-    useEffect(() => {
-        if (imageURL) {
-            setHistory([imageURL, ...history])
-        }
-    }, [imageURL])
 
     if (isModelLoading) {
         return <h2>Model Loading...</h2>
