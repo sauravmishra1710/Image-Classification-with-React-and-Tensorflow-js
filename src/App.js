@@ -35,6 +35,7 @@ function App() {
           }
     }
 
+    // Predict the clas of the uploaded image
     const identify = async () => {
         const results = await model.classify(imageRef.current)
         setResults(results)
@@ -50,7 +51,7 @@ function App() {
     }, [])
 
     if (isModelLoading) {
-        return <h2>Model Loading...</h2>
+        return (<h1 class="modelloading">Loading Mobilenet Model...</h1>)
     }
 
     return (
