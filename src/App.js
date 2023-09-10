@@ -6,7 +6,7 @@ function App() {
     const [isModelLoading, setIsModelLoading] = useState(false)
     const [model, setModel] = useState(null)
     const [imageURL, setImageURL] = useState(null);
-    const [results, setResults] = useState([])
+    const [classificationResults, setResults] = useState([])
 
     const imageRef = useRef()
     const fileInputRef = useRef()
@@ -48,10 +48,10 @@ function App() {
           }
     }
 
-    // Predict the clas of the uploaded image
-    const identify = async () => {
-        const results = await model.classify(imageRef.current)
-        setResults(results)
+    // Predict the probable classes of the image
+    const classifyImage = async () => {
+        const classificationResults = await model.classify(imageRef.current)
+        setResults(classificationResults)
         toggleResultHolderDisplay(false);
     }
 
@@ -73,14 +73,15 @@ function App() {
             <div className='inputHolder'>
                 <input type='file' accept='image/*' capture='camera' className='uploadInput' onChange={uploadImage} ref={fileInputRef} />
                 <button className='uploadImage' onClick={triggerUpload}>Upload Image</button>
+                {imageURL && <button className='button' onClick={classifyImage}>Identify Image</button>}
             </div>
             <div className="mainWrapper">
                 <div className="mainContent">
                     <div className="imageHolder">
-                        {imageURL && <img src={imageURL} alt="Upload Preview" crossOrigin="anonymous" ref={imageRef} />}
+                        {imageURL && <img src={imageURL} alt="Image Preview" crossOrigin="anonymous" ref={imageRef} />}
                     </div>
-                    {results.length > 0 && <div className='resultsHolder'>
-                        {results.map((result, index) => {
+                    {classificationResults.length > 0 && <div className='resultsHolder'>
+                        {classificationResults.map((result, index) => {
                             return (
                                 <div className='result' key={result.className}>
                                     <span className='name'>{result.className}</span>
@@ -90,7 +91,6 @@ function App() {
                         })}
                     </div>}
                 </div>
-                {imageURL && <button className='button' onClick={identify}>Identify Image</button>}
             </div>
         </div>
     );
