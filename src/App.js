@@ -11,12 +11,25 @@ function App() {
     const imageRef = useRef()
     const fileInputRef = useRef()
 
+    function toggleResultHolderDisplay(hideResultsFrame) {
+      const resultsHolderFrame = document.getElementsByClassName('resultsHolder')[0];
+      if (!resultsHolderFrame) return;
+
+      if (hideResultsFrame) {
+        resultsHolderFrame.style.display = 'none';
+      }
+      else {
+        resultsHolderFrame.style.display = 'block';
+      }
+    }
+
     const loadModel = async () => {
         setIsModelLoading(true)
         try {
-            const model = await mobilenet.load()
-            setModel(model)
-            setIsModelLoading(false)
+            const model = await mobilenet.load({ version: 2,
+              alpha: 1.0 });
+            setModel(model);
+            setIsModelLoading(false);
         } catch (error) {
             console.log(error)
             setIsModelLoading(false)
@@ -24,14 +37,14 @@ function App() {
     }
 
     const uploadImage = (e) => {
+      toggleResultHolderDisplay(true);
         const { files } = e.target
         if (files.length > 0) {
             const url = URL.createObjectURL(files[0])
             setImageURL(url)
         } else {
-            // cancel open file dialog and hide the results holder.
+            // cancel open file dialog
             setImageURL(null)
-            document.getElementsByClassName('resultsHolder')[0].style.display = 'none';
           }
     }
 
@@ -39,7 +52,7 @@ function App() {
     const identify = async () => {
         const results = await model.classify(imageRef.current)
         setResults(results)
-        document.getElementsByClassName('resultsHolder')[0].style.display = 'block';
+        toggleResultHolderDisplay(false);
     }
 
     const triggerUpload = () => {
@@ -51,7 +64,7 @@ function App() {
     }, [])
 
     if (isModelLoading) {
-        return (<h1 class="modelloading">Loading Mobilenet Model...</h1>)
+        return (<h1 className="modelloading">Loading Mobilenet Model...</h1>)
     }
 
     return (
