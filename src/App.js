@@ -70,10 +70,10 @@ function App() {
     return (
         <div className="App">
             <h1 className='header'>Image Identification</h1>
-            <div className='inputHolder'>
+            <div className='buttonsHolder'>
                 <input type='file' accept='image/*' capture='camera' className='uploadInput' onChange={uploadImage} ref={fileInputRef} />
                 <button className='uploadImage' onClick={triggerUpload}>Upload Image</button>
-                {imageURL && <button className='button' onClick={classifyImage}>Identify Image</button>}
+                {imageURL && <button className='classifyButton' onClick={classifyImage}>Classify Image</button>}
             </div>
             <div className="mainWrapper">
                 <div className="mainContent">
