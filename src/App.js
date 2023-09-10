@@ -11,16 +11,24 @@ function App() {
     const imageRef = useRef()
     const fileInputRef = useRef()
 
-    function toggleResultHolderDisplay(hideResultsFrame) {
+    function showResultHolderDisplay(showResultsFrame) {
       const resultsHolderFrame = document.getElementsByClassName('resultsHolder')[0];
       if (!resultsHolderFrame) return;
 
-      if (hideResultsFrame) {
-        resultsHolderFrame.style.display = 'none';
-      }
-      else {
+      if (showResultsFrame) {
         resultsHolderFrame.style.display = 'block';
       }
+      else {
+        resultsHolderFrame.style.display = 'none';
+      }
+    }
+
+    function showPageDivider(showDivider) {
+      const divider = document.getElementsByClassName('divider')[0];
+      if (!divider) return;
+
+        if (showDivider) divider.style.display = 'block';
+        else divider.style.display = 'none';
     }
 
     const loadModel = async () => {
@@ -37,7 +45,8 @@ function App() {
     }
 
     const uploadImage = (e) => {
-      toggleResultHolderDisplay(true);
+      showResultHolderDisplay(false);
+      showPageDivider(false);
         const { files } = e.target
         if (files.length > 0) {
             const url = URL.createObjectURL(files[0])
@@ -52,7 +61,8 @@ function App() {
     const classifyImage = async () => {
         const classificationResults = await model.classify(imageRef.current)
         setResults(classificationResults)
-        toggleResultHolderDisplay(false);
+        showResultHolderDisplay(true);
+        showPageDivider(true);
     }
 
     const triggerUpload = () => {
@@ -69,7 +79,7 @@ function App() {
 
     return (
         <div className="App">
-            <h1 className='header'>Image Identification</h1>
+            <h1 className='pageHeader'>Image Classification</h1>
             <div className='buttonsHolder'>
                 <input type='file' accept='image/*' capture='camera' className='uploadInput' onChange={uploadImage} ref={fileInputRef} />
                 <button className='uploadImage' onClick={triggerUpload}>Upload Image</button>
@@ -80,7 +90,9 @@ function App() {
                     <div className="imageHolder">
                         {imageURL && <img src={imageURL} alt="Image Preview" crossOrigin="anonymous" ref={imageRef} />}
                     </div>
+                    <div className="divider"></div>
                     {classificationResults.length > 0 && <div className='resultsHolder'>
+                    <h1 className="classificationResults">Classification Results</h1>
                         {classificationResults.map((result, index) => {
                             return (
                                 <div className='result' key={result.className}>
