@@ -1,6 +1,8 @@
 import './App.css';
 import { useState, useEffect, useRef } from 'react';
 import * as mobilenet from "@tensorflow-models/mobilenet";
+import CircularProgress from "@mui/material/CircularProgress"; // refer: https://mui.com/material-ui/react-progress/#circular-indeterminate
+import Box from "@mui/material/Box";
 
 function App() {
     const [isModelLoading, setIsModelLoading] = useState(false)
@@ -74,7 +76,14 @@ function App() {
     }, [])
 
     if (isModelLoading) {
-        return (<h1 className="modelloading">Loading Mobilenet Model...</h1>)
+        return (
+          <div className="modelloading">
+          <h1 className="">Loading Mobilenet Model...</h1>
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress/>
+          </Box>
+          </div>
+        );
     }
 
     return (
