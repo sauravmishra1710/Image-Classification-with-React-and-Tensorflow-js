@@ -27,6 +27,19 @@ function App() {
       }
     }
 
+    // function runtimeMediaHandler(viewPort) {
+    //   const resultsHolderFrame = document.getElementsByClassName('resultsHolder')[0];
+    //   if (!resultsHolderFrame) return;
+    //   if (viewPort.matches) { // If media query matches
+    //     resultsHolderFrame.style.display = 'block';
+    //   } else {
+    //     resultsHolderFrame.style.display = 'none';      }
+    // }
+
+    // var mediaViewPort = window.matchMedia("(max-width: 800px)")
+    // runtimeMediaHandler(mediaViewPort);
+    // mediaViewPort.addListener(runtimeMediaHandler) // Attach listener function on state changes  
+
     function showPageDivider(showDivider) {
       const divider = document.getElementsByClassName('divider')[0];
       if (!divider) return;
