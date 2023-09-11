@@ -104,7 +104,7 @@ code {
     width: 60%;
     display: block;
     flex: 0 0 60%;
-    // max-width: 900px;
+    max-width: 900px;
     height: 70vmin;
 
     @media (max-width: 800px) {
@@ -128,7 +128,7 @@ code {
 .resultsHolder {
     padding: 30px;
     top: 100px;
-    width: 60%;
+    width: 30%;
     @media (max-width: 800px) {
         width: 100%;
         padding: 0;
@@ -136,13 +136,12 @@ code {
 
     .classificationResults {
         border: 0px solid rgb(255, 255, 255);
-        width: 600px;
         font-weight: 800;
         color: blueviolet;
         margin: auto;
         text-align: center;
         position: relative;
-        top: -240px
+        top: -20px
       }
 
     .result {
@@ -180,7 +179,7 @@ code {
 }
 
 .divider {
-    width: 15px;
+    width: 10px;
     background-color: blueviolet;
     border-radius: 25px;
     margin-left: 20px;
