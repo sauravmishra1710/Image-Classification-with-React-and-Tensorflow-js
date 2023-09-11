@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import * as mobilenet from "@tensorflow-models/mobilenet";
 import CircularProgress from "@mui/material/CircularProgress"; // refer: https://mui.com/material-ui/react-progress/#circular-indeterminate
 import Box from "@mui/material/Box";
+import IconSpinner from 'terra-icon/lib/icon/IconSpinner';
+import Spacer from 'terra-spacer';
 
 function App() {
     const [isModelLoading, setIsModelLoading] = useState(false)
@@ -76,14 +78,22 @@ function App() {
     }, [])
 
     if (isModelLoading) {
-        return (
-          <div className="modelloading">
+      return (
+        <div className="modelloading">
           <h1 className="">Loading Mobilenet Model...</h1>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <CircularProgress/>
+            <CircularProgress color="inherit"/>
           </Box>
-          </div>
-        );
+        </div>
+      );
+
+      // return (
+      //   <div className="modelloading">
+      //   <h1 className="">Loading Mobilenet Model...</h1>
+      //   <Spacer marginTop="large+2">
+      //     <IconSpinner isSpin height="28" width="28" />
+      //   </Spacer>
+      // </div>)
     }
 
     return (

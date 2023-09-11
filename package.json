@@ -6,6 +6,8 @@
         "@emotion/react": "^11.9.0",
         "@emotion/styled": "^11.8.1",
         "@mui/material": "^5.14.8",
+        "terra-icon": "^3.1.0",
+        "terra-spacer": "^3.46.0",
         "@tensorflow-models/mobilenet": "^2.0.4",
         "@tensorflow/tfjs-converter": "^1.2.1",
         "@tensorflow/tfjs-core": "^1.2.1",
