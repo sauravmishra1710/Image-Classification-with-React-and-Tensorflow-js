@@ -13,6 +13,69 @@ This TensorFlow.js model does not require you to know about machine learning. It
 
 For more information about MobileNet, check out this readme in tensorflow/models.
 
+## API
+### Loading the model
+mobilenet is the module name, which is automatically included when you use the <script src> method. When using ES6 imports, mobilenet is the module.
+
+```
+mobilenet.load({
+    version: 1,
+    alpha?: 0.25 | .50 | .75 | 1.0,
+    modelUrl?: string
+    inputRange?: [number, number]
+  }
+)
+```
+For users of previous versions (1.0.x), the API is:
+
+```
+mobilenet.load(
+    version?: 1,
+    alpha?: 0.25 | .50 | .75 | 1.0
+)
+```
+
+**Args:**
+
+- version: The MobileNet version number. Use 1 for MobileNetV1, and 2 for MobileNetV2. Defaults to 1.
+- alpha: Controls the width of the network, trading accuracy for performance. A smaller alpha decreases accuracy and increases performance. 0.25 is only available for V1. Defaults to 1.0.
+- modelUrl: Optional param for specifying the custom model url or tf.io.IOHandler object. Returns a model object.
+- inputRange: Optional param specifying the pixel value range expected by the trained model hosted at the modelUrl. This is typically [0, 1] or [-1, 1].
+- mobilenet is the module name, which is automatically included when you use the <script src> method. When using ES6 imports, mobilenet is the module.
+
+### Making a classification
+You can make a classification with mobilenet without needing to create a Tensor with MobileNet.classify, which takes an input image element and returns an array with top classes and their probabilities.
+
+If you want to use this for transfer learning, see the infer method.
+
+This method exists on the model that is loaded from mobilenet.load.
+
+```
+model.classify(
+  img: tf.Tensor3D | ImageData | HTMLImageElement |
+      HTMLCanvasElement | HTMLVideoElement,
+  topk?: number
+)
+```
+
+**Args:**
+- img: A Tensor or an image element to make a classification on.
+- topk: How many of the top probabilities to return. Defaults to 3.
+- Returns a Promise that resolves to an array of classes and probabilities that looks like:
+
+```
+[{
+  className: "Egyptian cat",
+  probability: 0.8380282521247864
+}, {
+  className: "tabby, tabby cat",
+  probability: 0.04644153267145157
+}, {
+  className: "Siamese cat, Siamese",
+  probability: 0.024488523602485657
+}]
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
