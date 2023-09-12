@@ -5,17 +5,17 @@ This project was bootstrapped for you with [Create React App](https://github.com
 A simple image classification app created using tensorflow-js and react. The app uses the `MobileNet` model for image classification.
 
 ## MobileNet
-MobileNets are small, low-latency, low-power models parameterized to meet the resource constraints of a variety of use cases. They can be built upon for classification, detection, embeddings and segmentation similar to how other popular large scale models, such as Inception, are used.
+`MobileNets` are small, low-latency, low-power models parameterized to meet the resource constraints of a variety of use cases. They can be built upon for classification, detection, embeddings and segmentation similar to how other popular large scale models, such as Inception, are used.
 
 MobileNets trade off between latency, size and accuracy while comparing favorably with popular models from the literature.
 
-This TensorFlow.js model does not require you to know about machine learning. It can take as input any browser-based image elements (<img>, <video>, <canvas> elements, for example) and returns an array of most likely predictions and their confidences.
+This TensorFlow.js model does not require you to know about machine learning. It can take as input any browser-based image elements (`<img>, <video>, <canvas>` elements, for example) and returns an array of most likely predictions and their confidences.
 
-For more information about MobileNet, check out this readme in tensorflow/models.
+For more information about MobileNet, check out this readme in [tensorflow/models](https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet_v1.md).
 
 ## API
 ### Loading the model
-mobilenet is the module name, which is automatically included when you use the <script src> method. When using ES6 imports, mobilenet is the module.
+`mobilenet` is the module name, which is automatically included when you use the <script src> method. When using ES6 imports, mobilenet is the module.
 
 ```
 mobilenet.load({
@@ -37,7 +37,7 @@ mobilenet.load(
 
 **Args:**
 
-- version: The MobileNet version number. Use 1 for MobileNetV1, and 2 for MobileNetV2. Defaults to 1.
+- version: The MobileNet version number. Use 1 for [MobileNetV1](https://github.com/tensorflow/models/blob/master/research/slim/nets/mobilenet_v1.md), and 2 for [MobileNetV2](https://github.com/tensorflow/models/tree/master/research/slim/nets/mobilenet). Defaults to 1.
 - alpha: Controls the width of the network, trading accuracy for performance. A smaller alpha decreases accuracy and increases performance. 0.25 is only available for V1. Defaults to 1.0.
 - modelUrl: Optional param for specifying the custom model url or tf.io.IOHandler object. Returns a model object.
 - inputRange: Optional param specifying the pixel value range expected by the trained model hosted at the modelUrl. This is typically [0, 1] or [-1, 1].
