@@ -97,6 +97,7 @@ function App() {
     }
 
     useEffect(() => {
+      document.title = "Image Classification with MobileNet"
       loadModel()
     }, [])
 
