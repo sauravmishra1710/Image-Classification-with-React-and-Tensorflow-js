@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Image-Classification-with-React-and-Tensorflow-js/static/css/main.ed3dcc16.chunk.css",
-    "main.js": "/Image-Classification-with-React-and-Tensorflow-js/static/js/main.53d33888.chunk.js",
-    "main.js.map": "/Image-Classification-with-React-and-Tensorflow-js/static/js/main.53d33888.chunk.js.map",
+    "main.js": "/Image-Classification-with-React-and-Tensorflow-js/static/js/main.aa3d0215.chunk.js",
+    "main.js.map": "/Image-Classification-with-React-and-Tensorflow-js/static/js/main.aa3d0215.chunk.js.map",
     "runtime-main.js": "/Image-Classification-with-React-and-Tensorflow-js/static/js/runtime-main.18cff13f.js",
     "runtime-main.js.map": "/Image-Classification-with-React-and-Tensorflow-js/static/js/runtime-main.18cff13f.js.map",
     "static/css/2.94726647.chunk.css": "/Image-Classification-with-React-and-Tensorflow-js/static/css/2.94726647.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.94726647.chunk.css",
     "static/js/2.f0c01173.chunk.js",
     "static/css/main.ed3dcc16.chunk.css",
-    "static/js/main.53d33888.chunk.js"
+    "static/js/main.aa3d0215.chunk.js"
   ]
 }
