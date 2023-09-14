@@ -4,7 +4,9 @@ The web application is deployed to [Image-Classification-with-React-and-Tensorfl
 
 This project was bootstrapped for you with [Create React App](https://github.com/facebook/create-react-app).
 
-A simple image classification app created using tensorflow-js and react. The application uses the `MobileNet` model for image classification.
+A simple image classification app created using tensorflow-js and react. The app uses the pre-built `MobileNet v2` model for image classification without going through any additional training process.
+
+Additional detauls about the Mobilenet model is documented below.
 
 ## MobileNet 
 `MobileNets` are small, low-latency, low-power models parameterized to meet the resource constraints of a variety of use cases. They can be built upon for classification, detection, embeddings and segmentation similar to how other popular large scale models, such as Inception, are used.
